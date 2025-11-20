@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_task_form_inherit" model="ir.ui.view">
+    <field name="name">project.task.form.inherit</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <field name="running_timeline_id" invisible="1" />
+        <button name="start_timeline" type="object" string="Start Timeline" class="btn-success"
+                attrs="{'invisible': [('running_timeline_id', '!=', False)]}"/>
+        <button name="stop_timeline" type="object" string="Stop Timeline" class="btn-danger"
+                attrs="{'invisible': [('running_timeline_id', '=', False)]}"/>
+      </xpath>
+      <xpath expr="//notebook" position="inside">
+        <page string="Timeline">
+          <group>
+            <field name="timeline_duration_display" />
+          </group>
+          <field name="timeline_ids">
+            <tree create="0" edit="0">
+              <field name="employee_id" />
+              <field name="start_date" />
+              <field name="end_date" />
+              <field name="duration_display" />
+              <field name="state" widget="badge"
+                     decoration-success="state == 'stopped'"
+                     decoration-danger="state == 'running'" />
+            </tree>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
