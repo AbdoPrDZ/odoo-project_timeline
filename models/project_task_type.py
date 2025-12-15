@@ -33,7 +33,7 @@ class ProjectTaskType(models.Model):
       raise ValidationError(
           _('User must be linked to an employee to access projects.')
       )
-    
+
     if len(self) > 0:
       projects = self.mapped('project_ids')
       projects._check_user_access()

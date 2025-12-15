@@ -12,8 +12,7 @@
     'license': 'AGPL-3',
     'category': 'Project',
     'version': '1.0.0',
-    'sequence': 10,
-    'depends': ['base', 'web', 'mail', 'project', 'dsi_app_access'],
+    'depends': ['base', 'web', 'mail', 'project', 'hr', 'app_access'],
     "data": [
         'security/ir.model.access.csv',
         'views/project.xml',
